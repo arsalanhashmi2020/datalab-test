@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Data | DataLab</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .description-section, .update-section {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .footer-news-ticker {
+      margin-top: auto;
+      width: 100%;
+    }
+    .news-ticker {
+      background-color: #343a40;
+      color: white;
+      padding: 10px;
+      overflow: hidden;
+    }
+    .ticker-content {
+      display: flex;
+      animation: ticker-scroll 20s linear infinite;
+    }
+    @keyframes ticker-scroll {
+      from {transform: translateX(100%);}
+      to {transform: translateX(-100%);}
+    }
+    .navbar-countdown {
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      margin-right: 15px;
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">datalab</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item navbar-countdown" id="countdown-timer"></li>
+        <li class="nav-item"><a class="nav-link" href="insert.html">Insert</a></li>
+        <li class="nav-item"><a class="nav-link" href="visualize.html">Visualize</a></li>
+        <li class="nav-item"><a class="nav-link" href="read.html">Read</a></li>
+        <li class="nav-item"><a class="nav-link" href="update.html">Update</a></li>
+        <li class="nav-item"><a class="nav-link text-danger" href="delete.html">Delete</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container mt-5">
+    <!-- Update Data Section -->
+    <div class="update-section">
+      <h2 class="font-weight-bold">Update Existing Datasets</h2>
+      <p>
+        Select a dataset to edit its details and keep your database accurate. Modify metadata, tags, or values to reflect the most current information.
+      </p>
+      <form>
+        <div class="form-group">
+          <label for="datasetSelect">Select Dataset</label>
+          <select class="form-control" id="datasetSelect">
+            <option value="gdp2022">GDP Dataset 2022</option>
+            <option value="employment2023">Employment Dataset 2023</option>
+            <option value="inflation2021">Inflation Dataset 2021</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="newTags">New Tags</label>
+          <input type="text" class="form-control" id="newTags" placeholder="Enter new tags">
+        </div>
+        <div class="form-group">
+          <label for="newValues">New Values</label>
+          <input type="text" class="form-control" id="newValues" placeholder="Enter new values">
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Budget-Related News Ticker -->
+  <div class="footer-news-ticker">
+    <div class="news-ticker">
+      <div class="ticker-content">
+        <p>Global Economy: The IMF projects 3% growth this year | Inflation rates rise globally due to supply chain disruptions | World Bank announces new funding for developing economies...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrap.com/bootstrap-4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // Countdown script
+    function updateCountdown() {
+      const targetDate = new Date("June 1, 2024").getTime();
+      const now = new Date().getTime();
+      const timeLeft = targetDate - now;
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown-timer").innerHTML =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+      if (timeLeft < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById("countdown-timer").innerHTML = "Event Started!";
+      }
+    }
+
+    const countdownInterval = setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>

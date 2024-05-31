@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualize Data | DataLab</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-color: #f8f9fa;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    .description-section, .visualization-section {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .footer-news-ticker {
+      margin-top: auto;
+      width: 100%;
+    }
+    .news-ticker {
+      background-color: #343a40;
+      color: white;
+      padding: 10px;
+      overflow: hidden;
+    }
+    .ticker-content {
+      display: flex;
+      animation: ticker-scroll 20s linear infinite;
+    }
+    @keyframes ticker-scroll {
+      from {transform: translateX(100%);}
+      to {transform: translateX(-100%);}
+    }
+    .navbar-countdown {
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      margin-right: 15px;
+      display: flex;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="index.html">datalab</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item navbar-countdown" id="countdown-timer"></li>
+        <li class="nav-item"><a class="nav-link" href="insert.html">Insert</a></li>
+        <li class="nav-item"><a class="nav-link" href="visualize.html">Visualize</a></li>
+        <li class="nav-item"><a class="nav-link" href="read.html">Read</a></li>
+        <li class="nav-item"><a class="nav-link" href="update.html">Update</a></li>
+        <li class="nav-item"><a class="nav-link text-danger" href="delete.html">Delete</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="container mt-5">
+    <!-- Visualization Section -->
+    <div class="visualization-section">
+      <h2 class="font-weight-bold">Generate Visualizations</h2>
+      <p>
+        Choose from a variety of visualization types to analyze your datasets, compare economic variables, and gain actionable insights.
+      </p>
+      <ul>
+        <li><strong>Line Charts:</strong> Visualize time-series data.</li>
+        <li><strong>Bar Graphs:</strong> Compare categorical data.</li>
+        <li><strong>Heatmaps:</strong> Identify trends and correlations across different economic variables.</li>
+        <li><strong>Scatter Plots:</strong> Explore relationships between two variables.</li>
+        <li><strong>Maps:</strong> Analyze geographic trends and distributions.</li>
+      </ul>
+      <button type="button" class="btn btn-primary">Start Creating</button>
+    </div>
+  </div>
+
+  <!-- Budget-Related News Ticker -->
+  <div class="footer-news-ticker">
+    <div class="news-ticker">
+      <div class="ticker-content">
+        <p>Global Economy: The IMF projects 3% growth this year | Inflation rates rise globally due to supply chain disruptions | World Bank announces new funding for developing economies...</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap-4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // Countdown script
+    function updateCountdown() {
+      const targetDate = new Date("June 1, 2024").getTime();
+      const now = new Date().getTime();
+      const timeLeft = targetDate - now;
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown-timer").innerHTML =
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+      if (timeLeft < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById("countdown-timer").innerHTML = "Event Started!";
+      }
+    }
+
+    const countdownInterval = setInterval(updateCountdown, 1000);
+  </script>
+
+</body>
+</html>

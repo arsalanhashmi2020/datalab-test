@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insert Document</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">datalab</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- Additional navbar links can be added here -->
+    </div>
+  </nav>
+
+  <!-- Form for Metadata -->
+  <div class="container mt-5">
+    <h2>Insert New Document</h2>
+    <form action="http://localhost:4000/api/documents" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="datePublished">Date Published</label>
+        <input type="date" class="form-control" id="datePublished" name="datePublished" required>
+      </div>
+      <div class="form-group">
+        <label for="source">Source</label>
+        <input type="text" class="form-control" id="source" name="source" placeholder="Source of the data" required>
+      </div>
+      <div class="form-group">
+        <label for="sourceLink">Source Link</label>
+        <input type="url" class="form-control" id="sourceLink" name="sourceLink" placeholder="URL of the source" required>
+      </div>
+      <div class="form-group">
+        <label for="dateObtained">Date Obtained</label>
+        <input type="date" class="form-control" id="dateObtained" name="dateObtained" required>
+      </div>
+      <div class="form-group">
+        <label for="author">Author</label>
+        <input type="text" class="form-control" id="author" name="author" placeholder="Author of the data" required>
+      </div>
+      <div class="form-group">
+        <label for="tags">Tags</label>
+        <input type="text" class="form-control" id="tags" name="tags" placeholder="Comma-separated tags (e.g., economy, inflation)" required>
+      </div>
+      <div class="form-group">
+        <label for="variableName">Variable Name</label>
+        <input type="text" class="form-control" id="variableName" name="variableName" placeholder="Name of the variable" required>
+      </div>
+      <div class="form-group">
+        <label for="variableRange">Variable Range</label>
+        <input type="text" class="form-control" id="variableRange" name="variableRange" placeholder="Range of values (e.g., 0-100)" required>
+      </div>
+      <div class="form-group">
+        <label for="variableUnits">Variable Units</label>
+        <input type="text" class="form-control" id="variableUnits" name="variableUnits" placeholder="Units of measurement (e.g., USD, kilograms)" required>
+      </div>
+      <div class="form-group">
+        <label for="uploadFile">Upload Document</label>
+        <input type="file" class="form-control-file" id="uploadFile" name="uploadFile" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
